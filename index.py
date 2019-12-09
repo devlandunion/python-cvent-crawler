@@ -71,7 +71,12 @@ def get_cities_url(stateUrls):
 
 def get_pageURL(link, page):
     temp = link.split('-')
-    pgUrl = temp[0] + '-'  + temp[1] + '-' + temp[2] + '-'  + temp[3] + '-' + str(page) + '-' + temp[4] + '?so=1'
+    if len(temp) == 5:
+        pgUrl = temp[0] + '-'  + temp[1] + '-' + temp[2] + '-'  + temp[3] + '-' + str(page) + '-' + temp[4] + '?so=1'
+    elif len(temp) == 4:
+        pgUrl = temp[0] + '-'  + temp[1] + '-' + temp[2] + '-' + str(page) + '-' + temp[3] + '?so=1'
+    else:
+        pgUrl = link
     
     return pgUrl
 
