@@ -65,7 +65,12 @@ def getCityUrls(state, url):
 
 def get_pageURL(link, page):
     temp = link.split('-')
-    pgUrl = temp[0] + '-'  + temp[1] + '-' + temp[2] + '-'  + temp[3] + '-' + str(page) + '-' + temp[4] + '?so=1'
+    if len(temp) == 5:
+        pgUrl = temp[0] + '-'  + temp[1] + '-' + temp[2] + '-'  + temp[3] + '-' + str(page) + '-' + temp[4] + '?so=1'
+    elif len(temp) == 4:
+        pgUrl = temp[0] + '-'  + temp[1] + '-' + temp[2] + '-' + str(page) + '-' + temp[3] + '?so=1'
+    else:
+        pgUrl = link
     
     return pgUrl
 
@@ -104,7 +109,7 @@ def get_hotels_url(cityUrls):
 
 
 def main():
-    url = "https://www.cvent.com/rfp/oregon-meeting-event-planning.aspx"
+    url = "https://www.cvent.com/rfp/illinois-meeting-event-planning.aspx"
     cityUrls = getCityUrls('Florida', url)
 
     hotelUrls = get_hotels_url(cityUrls)
